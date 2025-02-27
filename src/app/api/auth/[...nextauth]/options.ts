@@ -1,39 +1,40 @@
-import type { NextAuthOptions } from "next-auth";
-import GitHubProvider from "next-auth/providers/github";
-import FacebookProvider from "next-auth/providers/facebook";
+import type { NextAuthOptions } from 'next-auth'
+import GitHubProvider from 'next-auth/providers/github'
+import FacebookProvider from 'next-auth/providers/facebook'
+import GoogleProvider from 'next-auth/providers/google'
 
-import GoogleProvider from "next-auth/providers/google";
+const githubId = process.env.GITHUB_ID
+const githubSecret = process.env.GITHUB_SECRET
 
-const clientId = process.env.GITHUB_ID;
-const clientSecret = process.env.GITHUB_SECRET;
+const facebookId = process.env.FACEBOOK_ID
+const facebookSecret = process.env.FACEBOOK_SECRET
 
-const facebookId = process.env.FACEBOOK_ID;
-const facebookSecret = process.env.FACEBOOK_SECRET;
+const googleId = process.env.GOOGLE_ID2
+const googleSecret = process.env.GOOGLE_SECRET
 
-const googleID = process.env.GOOGLE_ID2;
-const googleSecret = process.env.GOOGLE_SECRET;
-if (!clientId || !clientSecret) {
-  throw new Error("No client id or client secret in env file");
+if (!githubId || !githubSecret) {
+  throw new Error('Missing GitHub client ID or secret in environment variables')
 }
 if (!facebookId || !facebookSecret) {
-  throw new Error("No Facebook client id or client secret in env file");
+  throw new Error('Missing Facebook client ID or secret in environment variables')
 }
-if (!googleID || !googleSecret) {
-  throw new Error("No Facebook client id or client secret in env file");
+if (!googleId || !googleSecret) {
+  throw new Error('Missing Google client ID or secret in environment variables')
 }
+
 export const authOptions: NextAuthOptions = {
   providers: [
     GitHubProvider({
-      clientId: clientId,
-      clientSecret: clientSecret,
+      clientId: githubId,
+      clientSecret: githubSecret,
     }),
     FacebookProvider({
       clientId: facebookId,
       clientSecret: facebookSecret,
     }),
     GoogleProvider({
-      clientId: googleID,
+      clientId: googleId,
       clientSecret: googleSecret,
     }),
   ],
-};
+}
