@@ -46,6 +46,22 @@ export default async function HomePage() {
           >
             Documentation
           </a>
+          <a
+            className="docs"
+            href="http://localhost:3000/products"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            Products List
+          </a>{' '}
+          <a
+            className="docs"
+            href="http://localhost:3000/login"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            Login
+          </a>
         </div>
       </div>
       <div className="footer">
