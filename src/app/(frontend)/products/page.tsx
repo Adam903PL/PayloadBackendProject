@@ -1,21 +1,21 @@
-import ProductCard from '@/ui/ProductCard'
-import getProducts from '@/lib/action'
-import '@/app/(frontend)/styles.css'
+import ProductCard from '@/ui/ProductCard';
+import getProducts from '@/lib/action';
+import '@/app/(frontend)/styles.css';
 
 interface Product {
-  id: number
-  title: string
-  price: number
-  updatedAt: string
-  createdAt: string
-  featuredImage: {
-    url: string
-    alt: string
-  }
+  id: number;
+  title: string;
+  price: number;
+  updatedAt: string;
+  createdAt: string;
+  image: {  // Change from "featuredImage" to "image"
+    url: string;
+    alt: string;
+  };
 }
 
 export default async function Home() {
-  const products = await getProducts()
+  const products = await getProducts();
 
   return (
     <div className="home">
